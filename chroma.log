@@ -1,0 +1,41 @@
+[33mWARNING[0m:  [31-08-2024 22:43:08] chroma_server_nofile is not supported on Windows. chroma_server_nofile will not be set.
+[32mINFO[0m:     [31-08-2024 22:43:08] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[36mDEBUG[0m:    [31-08-2024 22:43:08] Starting component System
+[36mDEBUG[0m:    [31-08-2024 22:43:08] Starting component OpenTelemetryClient
+[36mDEBUG[0m:    [31-08-2024 22:43:08] Starting component SqliteDB
+[36mDEBUG[0m:    [31-08-2024 22:43:09] Starting component QuotaEnforcer
+[36mDEBUG[0m:    [31-08-2024 22:43:09] Starting component Posthog
+[36mDEBUG[0m:    [31-08-2024 22:43:09] Starting component LocalSegmentManager
+[36mDEBUG[0m:    [31-08-2024 22:43:09] Starting component SegmentAPI
+[32mINFO[0m:     [31-08-2024 22:43:09] Started server process [[36m27332[0m]
+[32mINFO[0m:     [31-08-2024 22:43:09] Waiting for application startup.
+[32mINFO[0m:     [31-08-2024 22:43:09] Application startup complete.
+[32mINFO[0m:     [31-08-2024 22:43:09] Uvicorn running on [1mhttp://localhost:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     [31-08-2024 22:43:10] Backing off send_request(...) for 0.7s (requests.exceptions.SSLError: HTTPSConnectionPool(host='us-api.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)'))))
+[32mINFO[0m:     [31-08-2024 22:43:11] Backing off send_request(...) for 0.4s (requests.exceptions.SSLError: HTTPSConnectionPool(host='us-api.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)'))))
+[32mINFO[0m:     [31-08-2024 22:43:11] Backing off send_request(...) for 3.9s (requests.exceptions.SSLError: HTTPSConnectionPool(host='us-api.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)'))))
+[31mERROR[0m:    [31-08-2024 22:43:15] Giving up send_request(...) after 4 tries (requests.exceptions.SSLError: HTTPSConnectionPool(host='us-api.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)'))))
+[32mINFO[0m:     [31-08-2024 22:44:41] ::1:53195 - "GET /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [31-08-2024 22:45:05] 127.0.0.1:53235 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [31-08-2024 22:45:05] 127.0.0.1:53235 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [31-08-2024 22:45:05] 127.0.0.1:53236 - "GET /api/v1 HTTP/1.1" 200
+[32mINFO[0m:     [31-08-2024 22:45:05] 127.0.0.1:53236 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [31-08-2024 22:45:05] Backing off send_request(...) for 0.7s (requests.exceptions.SSLError: HTTPSConnectionPool(host='us-api.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)'))))
+[32mINFO[0m:     [31-08-2024 22:45:06] Backing off send_request(...) for 1.0s (requests.exceptions.SSLError: HTTPSConnectionPool(host='us-api.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)'))))
+[32mINFO[0m:     [31-08-2024 22:45:07] Backing off send_request(...) for 2.5s (requests.exceptions.SSLError: HTTPSConnectionPool(host='us-api.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)'))))
+[31mERROR[0m:    [31-08-2024 22:45:09] Giving up send_request(...) after 4 tries (requests.exceptions.SSLError: HTTPSConnectionPool(host='us-api.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)'))))
+[32mINFO[0m:     [31-08-2024 22:53:41] ::1:56757 - "GET /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [31-08-2024 22:53:47] ::1:56802 - "GET /api/v1/collections/sg-gpp3?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [31-08-2024 22:53:47] ::1:56803 - "POST /api/v1/collections/e91e301d-4124-4826-8f93-83cf87bf23e2/get HTTP/1.1" 200
+[32mINFO[0m:     [31-08-2024 22:53:47] ::1:56802 - "GET /api/v1/collections/sg-gpp3?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [31-08-2024 22:53:47] ::1:56803 - "GET /api/v1/collections/e91e301d-4124-4826-8f93-83cf87bf23e2/count HTTP/1.1" 200
+[32mINFO[0m:     [31-08-2024 22:54:11] ::1:56875 - "GET /api/v1/collections/sg-gpp3?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [31-08-2024 22:54:11] Starting component PersistentLocalHnswSegment
+[32mINFO[0m:     [31-08-2024 22:54:11] ::1:56876 - "POST /api/v1/collections/e91e301d-4124-4826-8f93-83cf87bf23e2/query HTTP/1.1" 200
+[32mINFO[0m:     [31-08-2024 22:54:11] Backing off send_request(...) for 0.2s (requests.exceptions.SSLError: HTTPSConnectionPool(host='us-api.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)'))))
+[32mINFO[0m:     [31-08-2024 22:54:11] Backing off send_request(...) for 0.7s (requests.exceptions.SSLError: HTTPSConnectionPool(host='us-api.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)'))))
+[32mINFO[0m:     [31-08-2024 22:54:12] Backing off send_request(...) for 0.2s (requests.exceptions.SSLError: HTTPSConnectionPool(host='us-api.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)'))))
+[31mERROR[0m:    [31-08-2024 22:54:12] Giving up send_request(...) after 4 tries (requests.exceptions.SSLError: HTTPSConnectionPool(host='us-api.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)'))))
+[32mINFO[0m:     [31-08-2024 22:54:24] ::1:57127 - "GET /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [31-08-2024 22:54:24] ::1:57127 - "GET /api/v1/collections/sg-gpp3?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [31-08-2024 22:54:25] ::1:57134 - "POST /api/v1/collections/e91e301d-4124-4826-8f93-83cf87bf23e2/query HTTP/1.1" 200

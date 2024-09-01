@@ -9,9 +9,12 @@ from langchain_community.document_loaders import PDFPlumberLoader
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.llms.ollama import Ollama
 from langchain_chroma import Chroma
+from langchain_community.vectorstores import Milvus
+
 from langchain_core.callbacks import CallbackManager, StreamingStdOutCallbackHandler
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_core.prompts import PromptTemplate, ChatPromptTemplate, MessagesPlaceholder
+from langchain_elasticsearch import ElasticsearchStore
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 folder_path = "../db"
@@ -37,21 +40,48 @@ text_splitter = RecursiveCharacterTextSplitter(
 )
 chunks = text_splitter.split_documents(docs)
 
-# 5. embed the chunks with server mode
-chroma_client = chromadb.HttpClient(host='127.0.0.1', port=8000, settings=Settings(allow_reset=True, anonymized_telemetry=False))
-print(chroma_client.heartbeat())
+# 5.1 embed the chunks with server mode
+# chroma_client = chromadb.HttpClient(host='127.0.0.1', port=8000, settings=Settings(allow_reset=True, anonymized_telemetry=False))
+# print(chroma_client.heartbeat())
 # collection = chroma_client.create_collection(name="sg-gpp3")
-chroma_db = Chroma(
-        collection_name="sg-gpp3",
-        embedding_function=embedding,
-        client=chroma_client,
-    )
-vector_store = chroma_db.from_documents(documents=chunks, embedding=embedding)
+# chroma_db = Chroma(
+#         collection_name="sg-gpp3",
+#         embedding_function=embedding,
+#         client=chroma_client,
+#     )
+# vector_store = chroma_db.from_documents(documents=chunks, embedding=embedding)
 
-# Local mode
+# 5.2Local mode
 # vector_store = Chroma.from_documents(
 #     documents=chunks, embedding=embedding, persist_directory=folder_path
 # )
+
+# 5.3 ElasticSearch
+# es_store = ElasticsearchStore(
+#     es_cloud_id="58a10608a6a644a0a4aa39efdab55c85:ZWFzdHVzMi5henVyZS5lbGFzdGljLWNsb3VkLmNvbTo0NDMkMDlmODNiZDcwZGI1NGJhODhhZWU3ZDYwNTdiM2QwOGMkMTc1ODg2Y2ZmMGFjNGU5MTg4MjY2MzhiMDQ0MGM0ZTM=",
+#     es_api_key="MFVneXFaRUJxQ0QwX2JCSkVFMW06RTdBdjNiMFpURGlsaGNPM0xFMXhpZw==",
+#     index_name="HK-DSC",
+#     strategy=ElasticsearchStore.SparseVectorRetrievalStrategy(model_id=".elser_model_2"),
+# ),
+#
+# vectorstore = ElasticsearchStore(
+#     es_cloud_id="58a10608a6a644a0a4aa39efdab55c85:ZWFzdHVzMi5henVyZS5lbGFzdGljLWNsb3VkLmNvbTo0NDMkMDlmODNiZDcwZGI1NGJhODhhZWU3ZDYwNTdiM2QwOGMkMTc1ODg2Y2ZmMGFjNGU5MTg4MjY2MzhiMDQ0MGM0ZTM=",
+#     es_api_key="MFVneXFaRUJxQ0QwX2JCSkVFMW06RTdBdjNiMFpURGlsaGNPM0xFMXhpZw==",
+#     index_name="hk-dsc",
+#     embedding=embedding,
+# )
+# vectorstore.add_texts(question)
+# vector_store = vectorstore.from_documents(documents=chunks, embedding=embedding, index_name="hk-dsc",es_cloud_id="58a10608a6a644a0a4aa39efdab55c85:ZWFzdHVzMi5henVyZS5lbGFzdGljLWNsb3VkLmNvbTo0NDMkMDlmODNiZDcwZGI1NGJhODhhZWU3ZDYwNTdiM2QwOGMkMTc1ODg2Y2ZmMGFjNGU5MTg4MjY2MzhiMDQ0MGM0ZTM=",)
+
+# 5.4 Milvus
+# https://blog.csdn.net/2401_85378759/article/details/141160098
+vector_store = Milvus.from_documents(
+    documents=chunks,  # 设置保存的文档
+    embedding=embedding,  # 设置 embedding model
+    collection_name="hk_dsc_product",  # 设置 集合名称
+    drop_old=True,
+    connection_args={"host": "192.168.3.5", "port": "19530"},  # Milvus连接配置
+)
 
 # 6. Persist the database to disk
 # vector_store.persist()
