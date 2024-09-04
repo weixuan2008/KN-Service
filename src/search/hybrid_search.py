@@ -7,6 +7,8 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_milvus.retrievers import MilvusCollectionHybridSearchRetriever
 from langchain_milvus.utils.sparse import BM25SparseEmbedding
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+
+
 from pymilvus import (
     Collection,
     CollectionSchema,
@@ -50,6 +52,7 @@ embedding = OllamaEmbeddings(model="nomic-embed-text")
 # 3. Initialize dense embedding function and get dimension
 dense_dim = len(embedding.embed_query(texts[1]))
 print(dense_dim)
+
 
 
 # 4. Initialize sparse embedding function.
